@@ -1,0 +1,42 @@
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+
+
+.w-100 {
+    width: 100%;
+}
+
+.label > span {
+    margin-top: 5px;
+    text-align: left;
+}
+
+.submit-btn {
+    margin-top: 10px;
+    background-color: lightblue;
+    border: 0;
+    outline: 0;
+    padding: 5px 10px;
+}
+
+.error-red {
+    font-size: 12px;
+    color: red;
+    margin-bottom: 5px;
+}
+
+input {
+    border-radius: 4px;
+    height: 20px;
+}
+
+input.invalid {
+    border: 1px solid red;
+    outline: none;
+}
