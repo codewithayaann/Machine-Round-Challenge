@@ -1,70 +1,136 @@
-# Getting Started with Create React App
+# React Dynamic Forms with Validation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This component allows you to create dynamic forms with customizable validation using a schema-based approach in React.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Dynamic form generation from a schema.
+- Validation for required fields, length, patterns, password strength, and matching fields.
+- Event-driven validation (on `blur` or `change`).
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Define Your Form Schema
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create a form schema that outlines the fields and their validation rules.
 
-### `npm test`
+```javascript
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+export const validationSchema = {
+    name: {
+        required: true,
+        minLength: 2,
+        maxLength: 50,
+        pattern: /^[a-zA-Z ]+$/,
+    },
+    email: {
+        required: true,
+        pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    },
+    password: {
+        required: true,
+        minLength: 8,
+        strength: {
+            uppercase: 1,
+            lowercase: 1,
+            digit: 1,
+            special: 1,
+        },
+    },
+    confirmPassword: {
+        required: true,
+        match: "password",
+    },
+};
+```
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
+export const FORM = [
+    { id: 'name', label: 'Name', name: 'name' },
+    { id: 'email', label: 'Email', name: 'email', type: 'email' },
+    { id: 'password', label: 'Password', name: 'password', type: 'password' },
+    { id: 'confirmPassword', label: 'Confirm Password', name: 'confirmPassword', type: 'password' }
+];
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Forms Component
 
-### `npm run eject`
+```javascript
+import React, { useState } from 'react';
+import "./form.css";
+import { validateForm } from './validate';
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+export const Forms = ({ forms, schema, validateOn }) => {
+    const [errors, setError] = useState({});
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    const handleValidate = (form, schema) => {
+        const errors = validateForm(form, schema);
+        const haveErrors = !!Object.keys(errors).length;
+        setError(errors);
+        return haveErrors;
+    };
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    const handleValidateOnEvent = (event) => {
+        if (event.type === validateOn) {
+            const name = event.target.name;
+            const objectData = { [name]: event.target.value };
+            const haveErrors = handleValidate(objectData, { [name]: schema[name] });
+            if (haveErrors) return;
+        }
+    };
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    const onSubmit = (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const obj = Object.fromEntries(formData);
+        const haveErrors = handleValidate(obj, schema);
+        if (haveErrors) return;
+        alert("Hurray!! API HIT for save");
+    };
 
-## Learn More
+    return (
+        <form className='form d-flex flex-column' onSubmit={onSubmit}>
+            {forms.map((form) => (
+                <label className='d-flex label flex-column flex-start' key={form.id}>
+                    <span>{form.label}</span>
+                    <input
+                        onBlur={handleValidateOnEvent}
+                        onChange={handleValidateOnEvent}
+                        type={form.type || 'text'}
+                        className={errors[form.id] ? "invalid" : ""}
+                        id={form.id}
+                        name={form.name}
+                    />
+                    {errors[form.id] && <span className='error-red'>{errors[form.id]}</span>}
+                </label>
+            ))}
+            <button className='submit-btn'>Submit</button>
+        </form>
+    );
+};
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. Application Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```javascript
+import React from 'react';
+import { Forms } from './Forms';
+import { validationSchema } from './validate';
 
-### Code Splitting
+const FORM = [
+    { id: 'name', label: 'Name', name: 'name' },
+    { id: 'email', label: 'Email', name: 'email', type: 'email' },
+    { id: 'password', label: 'Password', name: 'password', type: 'password' },
+    { id: 'confirmPassword', label: 'Confirm Password', name: 'confirmPassword', type: 'password' }
+];
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+const App = () => (
+    <Forms forms={FORM} schema={validationSchema} validateOn="blur" />
+);
 
-### Analyzing the Bundle Size
+export default App;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
