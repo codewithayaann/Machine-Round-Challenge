@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="cropped.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="cropped.png" />
+    <title>Drag And Drop Application - Offline</title>
+  </head>
+  <body>
+    <h2>Offline Page</h2>
+    <p>You are currently offline. Please check your internet connection.</p>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- If you plan to use React, ensure the correct root id and script -->
+    <!-- <div id="root"></div> -->
+    <!-- <script src="%PUBLIC_URL%/offline.js"></script> -->
+     <script>
+      const refresh = ()=> window.location.reload()
+       window.addEventListener('online', refresh)
+     </script>
+  </body>
+</html>
+
+
