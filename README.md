@@ -5,19 +5,21 @@
 
 2. **Implement a Drag and Drop Feature**: Create a web page with a drag-and-drop interface using HTML, CSS, and JavaScript and ReactJS. Allow users to drag elements and drop them into designated areas.
 
-3. **Infinite Scroll**: Implement an infinite scroll feature on a web page. Load additional content as the user scrolls down the page using ReactJS.
+3. **Progressive Web App (PWA)**: Convert a web application into a Progressive Web App.
 
-4. **Form Autocomplete**: Add autocomplete functionality to a search input field using React. Provide suggestions as the user types.
+4. **Infinite Scroll**: Implement an infinite scroll feature on a web page. Load additional content as the user scrolls down the page using ReactJS.
 
-5. **Interactive Map**: Build an interactive map using a mapping library (e.g., Leaflet, Google Maps API) and allow users to search for locations, add markers, and display additional information when clicking on markers.
+5. **Form Autocomplete**: Add autocomplete functionality to a search input field using React. Provide suggestions as the user types.
 
-6. **Web Accessibility**: Ensure that a web page complies with web accessibility standards (WCAG). Make necessary HTML and CSS modifications to improve accessibility for users with disabilities.
+6. **Interactive Map**: Build an interactive map using a mapping library (e.g., Leaflet, Google Maps API) and allow users to search for locations, add markers, and display additional information when clicking on markers.
 
-7. **CSS Animation**: Create a CSS animation, such as a spinning loader or a fading effect, to enhance user experience on a webpage.
+7. **Web Accessibility**: Ensure that a web page complies with web accessibility standards (WCAG). Make necessary HTML and CSS modifications to improve accessibility for users with disabilities.
 
-8. **Responsive Email Template**: Design and code a responsive email template that looks good on both desktop and mobile email clients.
+8. **CSS Animation**: Create a CSS animation, such as a spinning loader or a fading effect, to enhance user experience on a webpage.
 
-9. **Dynamic Content Filtering**: Create a web page that allows users to filter content dynamically based on categories or tags using JavaScript.
+9. **Responsive Email Template**: Design and code a responsive email template that looks good on both desktop and mobile email clients.
+
+10. **Dynamic Content Filtering**: Create a web page that allows users to filter content dynamically based on categories or tags using JavaScript.
 
 
 ## Intermediate Frontend Development
@@ -28,19 +30,15 @@
 
 12. **Sticky Navigation**: Implement a sticky navigation bar that sticks to the top of the page when scrolling down and returns to its original position when scrolling up.
 
+13. **Unit Testing**: Write unit tests for a JavaScript function or component using a testing framework like Jest.
 
-13. **Progressive Web App (PWA)**: Convert a web application into a Progressive Web App.
+14. **Cross-browser Compatibility**: Ensure that a webpage works correctly and looks consistent across different web browsers (e.g., Chrome, Firefox, Edge).
 
-14. **Unit Testing**: Write unit tests for a JavaScript function or component using a testing framework like Jest.
+15. **Email Signature**: Design and code a responsive email signature that can be used in email clients.
 
-15. **Cross-browser Compatibility**: Ensure that a webpage works correctly and looks consistent across different web browsers (e.g., Chrome, Firefox, Edge).
+16. **Infinite Carousel**: Create an infinite carousel/slider that automatically loops through a set of images or content, providing navigation controls for the user.
 
-16. **Email Signature**: Design and code a responsive email signature that can be used in email clients.
-
-17. **Infinite Carousel**: Create an infinite carousel/slider that automatically loops through a set of images or content, providing navigation controls for the user.
-
-18. **Tooltip Component**: Design and implement a reusable tooltip component in HTML, CSS, and React.js, that appears when hovering over specific elements.
-
+17. **Tooltip Component**: Design and implement a reusable tooltip component in HTML, CSS, and React.js, that appears when hovering over specific elements.
 
 18. **Custom Dropdown Menu**: Create a custom dropdown menu that expands and collapses with smooth animations when the user hovers over a trigger element.
 
