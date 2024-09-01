@@ -8,13 +8,13 @@ Source Videos: [Youtube | Playlist](https://www.youtube.com/watch?v=W3oxPPuIOfw&
 
 # Machine Round 🧠 Challenge 🎯
 
-- **Form Validation**: Implement client-side form validation for a registration form using HTML5 and JavaScript. Validate fields like email, password strength, and required fields.
+- [X] **Form Validation**: Implement client-side form validation for a registration form using HTML5 and JavaScript. Validate fields like email, password strength, and required fields.
 
-- **Implement a Drag and Drop Feature**: Create a web page with a drag-and-drop interface using HTML, CSS, and JavaScript and ReactJS. Allow users to drag elements and drop them into designated areas.
+- [X]  **Implement a Drag and Drop Feature**: Create a web page with a drag-and-drop interface using HTML, CSS, and JavaScript and ReactJS. Allow users to drag elements and drop them into designated areas.
 
-- **Progressive Web App (PWA)**: Convert a web application into a Progressive Web App.
+- [X] **Progressive Web App (PWA)**: Convert a web application into a Progressive Web App.
 
-- **Browser Storage Encryption**: Implement encryption for data stored in browser storage (e.g., localStorage) to enhance security.
+- [X]  **Browser Storage Encryption**: Implement encryption for data stored in browser storage (e.g., localStorage) to enhance security.
 
 - **Infinite Scroll**: Implement an infinite scroll feature on a web page. Load additional content as the user scrolls down the page using ReactJS.
 
