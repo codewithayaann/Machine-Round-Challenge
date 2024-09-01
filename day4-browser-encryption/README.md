@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# Encryption of Storage Data
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrates how to securely store and retrieve data in the browser's `localStorage` using simple XOR encryption. The implementation includes functions for encryption, decryption, and integration with `localStorage`.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+The provided code encrypts data before storing it in `localStorage` and decrypts it when retrieving it. This adds a layer of security by ensuring that sensitive information is not stored in plaintext. XOR encryption is a basic encryption method, where each character of the input is XORed with a character from a secret key.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To use this code in your project, simply copy the `encryption.js` and `localstorage.js` files into your project directory.
 
-### `npm test`
+Ensure your project is set up to handle ES6 modules, as the code uses the `import` and `export` syntax.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+### 1. Encryption and Decryption
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The core of this implementation is the XOR-based encryption and decryption functions:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
+export const xorEncryptDecrypt = (input, secretKey) => {
+    let output = '';
+    for (let i = 0; i < input.length; i++) {
+        const inputCode = input.charCodeAt(i);
+        const secretCode = secretKey.charCodeAt(i % secretKey.length);
+        const xor = inputCode ^ secretCode;
+        output += String.fromCharCode(xor);
+    }
+    return output;
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export const encrypt = (data, secretKey) => {
+    const stringifiedData = JSON.stringify(data);
+    return xorEncryptDecrypt(stringifiedData, secretKey);
+}
 
-### `npm run eject`
+export const decrypt = (data, secretKey) => {
+    try {
+        const decryptedData = xorEncryptDecrypt(data, secretKey);
+        return JSON.parse(decryptedData);
+    } catch {
+        return null;
+    }
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. LocalStorage Integration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The functions to set and get encrypted data from `localStorage` are as follows:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```javascript
+import { decrypt, encrypt } from "./encryption"
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const SECRET_CODE = 'code123';
 
-## Learn More
+export const setData = (key, data) => {
+    const encrypted = encrypt(data, SECRET_CODE);
+    localStorage.setItem(key, encrypted);
+}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+export const getData = (key) => {
+    const data = localStorage.getItem(key);
+    if (!data) return null;
+    return decrypt(data, SECRET_CODE);
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3. Application Integration
 
-### Code Splitting
+In your React application, you can use the encryption and decryption methods within your components as shown:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```javascript
+const handleChange = (e) => {
+    const { id, value } = e.target;
+    setData(id, value);
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+};
 
-### Analyzing the Bundle Size
+useEffect(() => {
+    const username = getData('username');
+    const email = getData('email');
+    const phone = getData('phone');
+    setFormData({
+      username,
+      email,
+      phone,
+    });
+}, []);
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Example
 
-### Making a Progressive Web App
+When a user inputs data in a form, it is encrypted using the `SECRET_CODE` and stored in `localStorage`. Upon reloading the page, the data is retrieved, decrypted, and used to populate the form fields.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```javascript
+setData('username', 'JohnDoe');
+const username = getData('username');
+console.log(username); // Outputs 'JohnDoe'
+```
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This ensures that sensitive information like usernames, emails, and phone numbers are not stored in plain text in the browser's `localStorage`.
