@@ -6,7 +6,7 @@ import { validationSchema } from './components/validate';
 function App() {
   return (
     <div className="App">
-      <Forms forms={FORM} schema={validationSchema} validateOn="" />
+      <Forms forms={FORM} schema={validationSchema} validateOn="submit" />
       <Forms forms={FORM} schema={validationSchema} validateOn="change" />
       <Forms forms={FORM} schema={validationSchema} validateOn="blur" />
     </div>
