@@ -1,3 +1,7 @@
+YT Video : https://youtu.be/-P_uKkxYe4Q?si=TZr5lDDBzTLbHBAo
+
+
+
 # Encryption of Storage Data
 
 This project demonstrates how to securely store and retrieve data in the browser's `localStorage` using simple XOR encryption. The implementation includes functions for encryption, decryption, and integration with `localStorage`.
