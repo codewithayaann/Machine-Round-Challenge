@@ -8,13 +8,14 @@ Source Videos: [Youtube | Playlist](https://www.youtube.com/watch?v=W3oxPPuIOfw&
 
 # Machine Round 🧠 Challenge 🎯
 
-- [X] **Form Validation**: Implement client-side form validation for a registration form using HTML5 and JavaScript. Validate fields like email, password strength, and required fields.
+- [X] **Form Validation**: Implement client-side form validation for a registration form using HTML5 and JavaScript. Validate fields like email, password strength, and required fields. [CODE LINK](https://github.com/codewithayaann/Machine-Round-Challenge/tree/main/day1-form-validation)
 
-- [X]  **Implement a Drag and Drop Feature**: Create a web page with a drag-and-drop interface using HTML, CSS, and JavaScript and ReactJS. Allow users to drag elements and drop them into designated areas.
+- [X]  **Implement a Drag and Drop Feature**: Create a web page with a drag-and-drop interface using HTML, CSS, and JavaScript and ReactJS. Allow users to drag elements and drop them into designated areas. [CODE LINK](https://github.com/codewithayaann/Machine-Round-Challenge/tree/main/day2-drag-and-drop)
 
-- [X] **Progressive Web App (PWA)**: Convert a web application into a Progressive Web App.
+- [X] **Progressive Web App (PWA)**: Convert a web application into a Progressive Web App. [CODE LINK](https://github.com/codewithayaann/Machine-Round-Challenge/tree/main/day3-progressive-web-app)
 
-- [X]  **Browser Storage Encryption**: Implement encryption for data stored in browser storage (e.g., localStorage) to enhance security.
+- [X]  **Browser Storage Encryption**: Implement encryption for data stored in browser storage (e.g., localStorage) to enhance security. [CODE LINK](https://github.com/codewithayaann/Machine-Round-Challenge/tree/main/day4-browser-encryption)
+- [X]  **Microservice in Frontend**: Implement microservice in frontend (Microfrontend) and connect that to other app.
 
 - **Infinite Scroll**: Implement an infinite scroll feature on a web page. Load additional content as the user scrolls down the page using ReactJS.
 
