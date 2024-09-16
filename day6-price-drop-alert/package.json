@@ -1,0 +1,21 @@
+{
+  "name": "day6-price-drop-alert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "init": "^0.1.2",
+    "mailersend": "^2.3.0",
+    "mailsender": "^1.1.2",
+    "node-schedule": "^2.1.1",
+    "nodemon": "^3.1.4",
+    "npm": "^10.8.3",
+    "puppeteer": "^23.3.0"
+  }
+}
