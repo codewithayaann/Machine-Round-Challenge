@@ -19,7 +19,7 @@ Source Videos: [Youtube | Playlist](https://www.youtube.com/watch?v=W3oxPPuIOfw&
 
 - [X]  **Web Scraping using Node JS**: Scrap flipkart product price and create price drop alert application. [CODE LINK](https://github.com/codewithayaann/Machine-Round-Challenge/tree/main/day5-microfrontend)
 
-- [X]   ** Design a File Explorer structure like VSCode. [CODE LINK](https://github.com/codewithayaann/Machine-Round-Challenge/tree/main/day5-microfrontend)
+- [X]   **Design a File Explorer structure like VSCode. [CODE LINK](https://github.com/codewithayaann/Machine-Round-Challenge/tree/main/day7-folder-file-structure-like-vs-code)
 
 - **Infinite Scroll**: Implement an infinite scroll feature on a web page. Load additional content as the user scrolls down the page using ReactJS.
 
