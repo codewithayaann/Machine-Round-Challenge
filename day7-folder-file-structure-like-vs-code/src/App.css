@@ -1,0 +1,30 @@
+.App {
+  padding: 20px;
+}
+
+.folder {
+  margin-left: 20px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.delete {
+  color: red;
+}
+
+.folder-section {
+  cursor: pointer;
+}
+
+.folder-section .buttons {
+  display: none;
+}
+
+.folder-section:hover .buttons {
+  display: block;
+  cursor: pointer;
+}
+
+
